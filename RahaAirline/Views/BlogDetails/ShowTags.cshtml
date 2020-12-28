@@ -1,0 +1,12 @@
+﻿@model DataLayer.Page
+
+<div class="sidebar-box ftco-animate">
+    <h3>کلمات کلیدی</h3>
+    <div class="tagcloud">
+        @foreach (var item in Model.Tag.Split(','))
+        {
+            <a href="/Search?q=@item" class="tag-cloud-link">@item</a>
+        }
+       
+    </div>
+</div>

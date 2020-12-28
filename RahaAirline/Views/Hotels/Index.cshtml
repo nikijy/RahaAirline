@@ -1,0 +1,77 @@
+﻿@using RahaAirline
+@model IEnumerable<DataLayer.Residence>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHotels.cshtml";
+}
+
+
+
+<div class="col-lg-8">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                <a href="/HotelDetails/ShowResidenceDetail/@item.ResidenceID" class="block-5" style="background-image: url('/ResidenceImages/@item.Image');">
+                    <div class="text">
+                       
+                        <h4 class="heading">@item.Location </h4>
+                        <h3 class="heading">@item.ResidenceType.ResidenceKind</h3>
+                        <span class="price"> @item.Price.ToTooman() </span>
+                        @*<div class="post-meta">
+                                <span>Ameeru Ahmed Magu Male’, Maldives</span>
+                            </div>
+                            <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>*@
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+    
+    
+
+   <!--Pagging-->
+    <div class="row mt-5">
+        <div class="col text-center">
+            <div class="block-27">
+                <ul>
+                    <li><a href="#">&lt;</a></li>
+                    @for (int i = 1; i <= (ViewBag.ResidenceCount + 1); i++)
+                    {
+                        <li class="@(((int)ViewBag.ResidenceID==i)?"active":"")"><a href="/Hotels/Index?residenceid=@i">@i<span class="sr-only">(current)</span></a></li>
+                    }
+                    <li><a href="#">&gt;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal-->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="MyModalLabel">  </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" id="BodyModal">
+              
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+

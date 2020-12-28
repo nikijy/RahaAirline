@@ -1,0 +1,16 @@
+﻿@using RahaAirline
+@model IEnumerable<DataLayer.Comment>
+
+@foreach (var item in Model)
+{
+    <li class="comment">
+        <div class="vcard bio">
+            <img style="height: 25px;width: 25px" src="~/images/comment.png" />
+        </div>
+        <div class="comment-body">
+            <h3>@item.Name</h3>
+            <div class="meta">@item.CreateDate.ToShamsi()</div>
+            <p>@item.CommentText</p>
+        </div>
+    </li>
+}

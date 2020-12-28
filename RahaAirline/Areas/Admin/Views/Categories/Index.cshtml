@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DataLayer.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    <a class="btn btn-success" id="btnNewCategory">افزودن دسته بندی جدید</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            <a class="btn btn-sm btn-warning" onclick="editCategory(@item.CategoryID)">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-sm btn-danger" onclick="deleteCategory(@item.CategoryID)">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
+@*modal*@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+@*end modal*@
+
+@section scripts
+{
+    <script src="~/Scripts/modal.js"></script>
+    <script>
+    $("#btnNewCategory").click(function() {
+
+        $.get("/Admin/Categories/Create", function(result) {
+
+            $("#myModal").modal();
+            $("#myModalLabel").html("افزودن  دسته بندی جدید");
+            $("#myModalBody").html(result);
+        });
+
+    });
+
+    function editCategory(id) {
+        $.get("/Admin/Categories/Edit/" + id, function(result) {
+            $("#myModal").modal();
+            $("#myModalLabel").html("ویرایش دسته بندی ");
+            $("#myModalBody").html(result);
+        });
+    }
+
+
+    function deleteCategory(id) {
+        $.get("/Admin/Categories/Delete/" + id, function(result) {
+            $("#myModal").modal();
+            $("#myModalLabel").html("حذف دسته بندی");
+            $("#myModalBody").html(result);
+        });
+    }
+
+    </script>
+}

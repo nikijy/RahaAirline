@@ -1,0 +1,85 @@
+﻿@model IdentitySample.Models.IndexViewModel
+@{
+    ViewBag.Title = "مدیریت حساب کاربری";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+
+<h1>@ViewBag.Title</h1>
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div class="row">
+    <div class="col-md-8">
+        <h3>
+            نام کاربری:@User.Identity.Name
+        </h3>
+        <br/>
+        <h4>
+            @(Model.HasPassword ? Html.ActionLink("تغییر کلمه عبور", "ChangePassword","Manage")
+                : Html.ActionLink("یک کلمه عبور انتخاب کنید", "SetPassword","Manage"))
+        </h4>
+        <br/>
+        <h4>
+            شماره همراه: @(Model.PhoneNumber ?? "خالی") [
+            @if (Model.PhoneNumber != null)
+            {
+                @Html.ActionLink("تغییر ", "AddPhoneNumber","Manage")
+                @: &nbsp;|&nbsp;
+                @Html.ActionLink("حذف", "RemovePhoneNumber", "Manage")
+               
+            }
+            else
+            {
+                @Html.ActionLink("اضافه کردن", "AddPhoneNumber","Manage")
+            }
+            ]
+        </h4>
+        <br/>
+        <h4>
+            ورود با حساب های دیگر: @Model.Logins.Count
+            @Html.ActionLink("مدیریت ", "ManageLogins","Manage")
+        </h4>
+        @*@if (Model.TwoFactor)
+        {
+            using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+            {
+                @Html.AntiForgeryToken()
+                <p>
+                    ورود دو مرحله ای اکنون فعال است
+                    <input type="submit" value="غیرفعال کردن" class="btn btn-default"/>
+                </p>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+            {
+                @Html.AntiForgeryToken()
+                <p>
+                    ورود دو مرحله ای اکنون غیرفعال است:
+                    <input type="submit" value="فعال کردن" class="btn btn-default"/>
+                </p>
+            }
+        }*@
+        @*@if (Model.BrowserRemembered)
+        {
+            using (Html.BeginForm("ForgetBrowser", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+            {
+                @Html.AntiForgeryToken()
+                <p>
+                    مرورگر در حال حاضر ورود دو مرحله ای را بخاطر دارد:
+                    <input type="submit" value="فراموش کردن " class="btn btn-default"/>
+                </p>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("RememberBrowser", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+            {
+                @Html.AntiForgeryToken()
+                <p>
+                    مرورگر در حال حاضر ورود دو مرحله ای را بخاطر ندارد:
+                    <input type="submit" value="بخاطر سپردن " class="btn btn-default"/>
+                </p>
+            }
+        }*@
+    </div>
+</div>

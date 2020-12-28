@@ -1,0 +1,60 @@
+﻿@model IdentitySample.Models.ManageLoginsViewModel
+@using Microsoft.Owin.Security
+@{
+    ViewBag.Title = "مدیریت حساب ها";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+@if (Model.CurrentLogins.Count > 0)
+{
+    
+    <table class="table">
+        <tbody>
+            @foreach (var account in Model.CurrentLogins)
+            {
+                <tr>
+                    <td>@account.LoginProvider</td>
+                    <td>
+                        @if (ViewBag.ShowRemoveButton)
+                        {
+                            using (Html.BeginForm("RemoveLogin", "Manage"))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div>
+                                    @Html.Hidden("loginProvider", account.LoginProvider)
+                                    @Html.Hidden("providerKey", account.ProviderKey)
+                                    <input type="submit" class="btn btn-default" value="حذف" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            @: &nbsp;
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@if (Model.OtherLogins.Count > 0)
+{
+    <h4>اضافه کردن سرویس برای ورود</h4>
+    <hr />
+    using (Html.BeginForm("LinkLogin", "Manage"))
+    {
+        @Html.AntiForgeryToken()
+        <div id="socialLoginList">
+        <p>
+            @foreach (AuthenticationDescription p in Model.OtherLogins)
+            {
+                <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType">@p.AuthenticationType</button>
+            }
+        </p>
+        </div>
+    }
+}
+

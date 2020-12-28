@@ -1,0 +1,26 @@
+﻿@model IEnumerable<DataLayer.UserMessage> 
+
+<ul class="dropdown-menu dropdown-messages">
+   @foreach (var item in Model)
+   {
+       <li>
+           <a href="#">
+               <div>
+                   <strong>@item.Name</strong>
+                   <span class="pull-right text-muted">
+                       <em>@item.Email</em>
+                   </span>
+               </div>
+               <div>@item.Subject</div>
+           </a>
+       </li>
+       <li class="divider"></li>
+   }
+
+    <li>
+        <a class="text-center" href="~/Admin/UserMessages/Index">
+            <strong>خواندن همه پیام ها</strong>
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </li>
+</ul>

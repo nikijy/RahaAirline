@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RahaAirline", "RahaAirline\RahaAirline.csproj", "{4C1C7B51-899A-4617-AB9D-610F954E58B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{37773A2D-1672-4813-8071-BF6C21B806FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C1C7B51-899A-4617-AB9D-610F954E58B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C1C7B51-899A-4617-AB9D-610F954E58B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C1C7B51-899A-4617-AB9D-610F954E58B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C1C7B51-899A-4617-AB9D-610F954E58B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37773A2D-1672-4813-8071-BF6C21B806FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37773A2D-1672-4813-8071-BF6C21B806FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37773A2D-1672-4813-8071-BF6C21B806FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37773A2D-1672-4813-8071-BF6C21B806FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

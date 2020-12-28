@@ -1,0 +1,96 @@
+﻿@model IEnumerable<DataLayer.Flight>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>جستجوی پرواز</title>
+    <link type="text/css" href="/Content/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.datepicker-cc.all.min.js"></script>
+
+
+</head>
+<body>
+    <div class="ftco-section-search">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 tabulation-search">
+                    <div class="element-animate">
+                        <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link p-3 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><span></span> پرواز</a>
+                            <a class="nav-link p-3" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><span></span> هتل</a>
+                            @*<a class="nav-link p-3" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><span></span> اجاره ماشین</a>
+                                <a class="nav-link p-3" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><span></span> سفر دریایی</a>*@
+                        </div>
+                    </div>
+
+                    <div class="tab-content py-5" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="block-17">
+
+                                <form action="/Search/SearchFlight" method="get" class="d-block d-lg-flex">
+                                    <div class="fields d-block d-lg-flex">
+                                        <div class="col-md-4"><input type="text" name="from" class="form-control" placeholder="جستجوی مبدا"></div>
+                                        <div class="col-md-4"><input type="text" name="destination" class="form-control" placeholder="جستجوی مقصد"></div>
+                                        @*<div class="check-in one-third"><input type="text" name="q" id="checkin_date" class="form-control" placeholder="تاریخ رفت"></div>*@
+
+                                        <div class="col-md-4">
+                                            <input type="text" id="Departure" name="departure" class="form-control" placeholder="تاریخ رفت" />
+                                        </div>
+
+                                        @*<div class="select-wrap one-third">
+                                            <input type="number" name="q" class="form-control" min="1" placeholder="تعداد" />
+                                        </div>*@
+                                    </div>
+                                    <input type="submit" name="q" class="search-submit btn btn-primary" value="جستجوی پرواز">
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="block-17">
+                                <form action="/Search/SearchResidence" method="post" class="d-block d-lg-flex">
+                                    <div class="fields d-block d-lg-flex">
+                                        <div class="col-md-12"><input type="text" name="q" class="form-control" placeholder="جستجوی مکان"></div>
+                                        @*<div class="col-md-4"><input type="text" name="q" id="checkin_date" class="form-control" placeholder="تاریخ ورود"></div>
+                                        <div class="col-md-4"><input type="text" name="q" id="checkout_date" class="form-control" placeholder="تاریخ خروج"></div>*@
+                                        @*<div class="select-wrap one-third">
+                                            <input type="number" name="q" class="form-control" min="1" placeholder="تعداد" />
+
+                                        </div>*@
+                                    </div>
+                                    <input type="submit" class="search-submit btn btn-primary" value="جستجوی هتل">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+    j(document).ready(function () {
+        j('#Departure').datepicker();
+
+
+    });
+
+</script>
+
+
+

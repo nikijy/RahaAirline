@@ -1,0 +1,52 @@
+﻿@using RahaAirline
+@model IEnumerable<DataLayer.Page>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+}
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="blog-entry">
+                        <a href="/BlogDetails/ShowBlogDetail/@item.PageID" class="block-20" style="background-image: url('/PageImages/@item.Image');">
+                        </a>
+                        <div class="text p-4">
+                            <div class="meta">
+                                <div><a href="/BlogDetails/ShowBlogDetail/@item.PageID">@item.CreateDate.ToShamsi()</a></div>
+                                <div><a href="/BlogDetails/ShowBlogDetail/@item.PageID">@item.Category.Title</a></div>
+                            </div>
+                            <h3 class="heading"><a href="/BlogDetails/ShowBlogDetail/@item.PageID">@item.ShortDescription</a></h3>
+                            <p class="clearfix">
+                                <a href="/BlogDetails/ShowBlogDetail/@item.PageID" class="float-left">بیشتر بخوانید</a>
+                                <a href="/BlogDetails/ShowBlogDetail/@item.PageID" class="float-right meta-chat"><span class="icon-chat"></span> @item.Comments.Count</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        @for (int i = 1; i <= (ViewBag.PageCount + 1); i++)
+                        {
+                            <li class="@(((int)ViewBag.PageID==i)?"active":"")"><a href="/Blog/Index?pageid=@i">@i<span class="sr-only">(current)</span></a></li>
+                        }
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

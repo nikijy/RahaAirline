@@ -1,0 +1,88 @@
+﻿@model IEnumerable<DataLayer.ResidenceType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    <a class="btn btn-success" id="btnNewResidenceType">افزودن نوع جدید</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResidenceKind)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResidenceKind)
+        </td>
+        <td>
+            <a class="btn btn-sm btn-warning" onclick="editResidenceType(@item.ResidenceTypeID)">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-sm btn-danger" onclick="deleteResidenceType(@item.ResidenceTypeID)">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
+
+@*modal*@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+@*end modal*@
+
+@section script
+{
+    
+<script src="~/Scripts/modal.js"></script>
+    <script>
+        $("#btnNewResidenceType").click(function () {
+
+            $.get("/Admin/ResidenceTypes/Create", function(result) {
+
+                $("#myModal").modal();
+                $("#myModalLabel").html("افزودن  نوع جدید");
+                $("#myModalBody").html(result);
+            });
+
+        });
+
+        function editResidenceType(id) {
+            $.get("/Admin/ResidenceTypes/Edit/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("ویرایش نوع اقامتگاه ");
+                $("#myModalBody").html(result);
+            });
+        }
+
+
+        function deleteResidenceType(id) {
+            $.get("/Admin/ResidenceTypes/Delete/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("حذف نوع اقامتگاه");
+                $("#myModalBody").html(result);
+            });
+        }
+
+    </script>
+}

@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FindFlights</title>
+    <link type="text/css" href="/Content/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.datepicker-cc.all.min.js"></script>
+</head>
+<body>
+    <div class="sidebar-box ftco-animate">
+        <div class="search-tours bg-light p-4">
+            <h3>جستجوی پرواز</h3>
+            <form action="/Search/SearchFlight" method="post">
+                <div class="fields">
+                    <div class="row flex-column">
+                        <div class="textfield-search col-sm-12 group mb-3"><input type="text" name="from" class="form-control" placeholder="جستجوی مبدا"></div>
+                        <div class="textfield-search col-sm-12 group mb-3"><input type="text" name="destination" class="form-control" placeholder="جستجوی مقصد"></div>
+                        <div class="check-in col-sm-12 group mb-3"><input type="text" name="departure" id="Departure" class="form-control" placeholder="تاریخ رفت"></div>
+                        <div class="col-sm-12 group mb-3">
+                            <input type="submit" class="search-submit btn btn-primary" value="جستجو">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+    j(document).ready(function () {
+        j('#Departure').datepicker();
+    });
+
+</script>

@@ -1,0 +1,32 @@
+﻿@using RahaAirline
+@model IEnumerable<DataLayer.Place>
+
+<section class="ftco-section">
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center mb-5 pb-5 ftco-animate">
+            <div class="col-md-7 text-center heading-section">
+                <h2>مکان های محبوب</h2>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <a href="#" class="block-5" style="background-image: url('/PlaceImages/@item.Image');">
+                        <div class="text">
+                            <span class="price">@item.Price.ToTooman()</span>
+                            <h3 class="heading">@item.Country</h3>
+                            <div class="post-meta">
+                                <span>@item.City</span>
+                            </div>
+                            @*<p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>*@
+                        </div>
+                    </a>
+                </div>
+            }
+   
+        </div>    
+                
+
+    </div>
+</section>

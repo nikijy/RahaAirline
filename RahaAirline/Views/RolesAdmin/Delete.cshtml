@@ -1,0 +1,26 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "حذف";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این مورد مطمئن هستید؟ </h3>
+@*<p>Deleting this Role will remove all users from this role. It will not delete the users.</p>*@
+<p>حذف این نقش باعث حذف تمام کاربران در این نقش میشود.این اقدام کاربری را حذف نمیکند</p>
+<div>
+    <h4>نقش</h4>
+    <hr />
+   
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-default" /> 
+          
+        </div>
+    }
+</div>

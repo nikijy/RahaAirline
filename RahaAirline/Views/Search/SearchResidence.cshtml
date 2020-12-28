@@ -1,0 +1,33 @@
+﻿@using RahaAirline
+@model IEnumerable<DataLayer.Residence>
+@{
+    ViewBag.Title = "SearchResidence";
+    Layout = "~/Views/Shared/_LayoutSearchResidence.cshtml";
+}
+
+<div style="width: 750px;">
+    <h3 style="text-align: center;">نتیجه ی جستجو</h3>
+    @if (ViewBag.message != null)
+    {
+    <label>@ViewBag.message</label>
+    }
+    else
+    {
+    foreach (var item in Model)
+    {
+        <hr />
+        <div class="col-md-8 ftco-animate">
+            <a class="mb-3">@item.ResidenceType.ResidenceKind </a>
+            <br />
+            <a href="/HotelDetails/ShowResidenceDetail/@item.ResidenceID">@item.ShortDescription</a>
+            <br />
+            <a href="/HotelDetails/ShowResidenceDetail/@item.ResidenceID">
+                <img style="max-width: 100%; min-width: 100%;" src="/ResidenceImages/@item.Image" alt="" class="img-fluid">
+            </a>
+
+
+        </div>
+    }
+    }
+
+</div>

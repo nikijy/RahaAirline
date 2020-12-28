@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutContactUs.cshtml";
+}
+
+
+@Html.Action("Contact","ContactUs")
+
+<div>
+    <div class="map-layer">
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCs3VzgoEu0VsLuVFmMKdU3rvQFb1FneXw"></script>
+        <div id="googleMap" style="height: 400px; width: 100%;"></div>
+    </div>
+</div>
+
+<script>
+    function initialize() {
+
+        // یافتن مختصات محل مورد نظر
+        // https://www.google.com/maps/
+
+        var mapProp = {
+            center: new google.maps.LatLng(32.6356977, 51.3309608), //مختصات محل موردنظر
+            zoom: 19,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+        // افزودن نشانه گر (marker)
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(35.7180961, 51.440398),
+            map: map,
+            icon: '~/images/map-marker.png',
+            animation: google.maps.Animation.BOUNCE
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Verify";
+    Layout = "~/Views/Shared/_LayoutHotelSingle.cshtml";
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>رسیدگی</title>
+</head>
+<body>
+<div style="width: 750px;">
+    @if (ViewBag.IsSuccess == true)
+    {
+        <div class="alert alert-success">
+            <h2>تراکنش با موفقیت انجام شد</h2>
+            <hr />
+            <p>کد پیگیری شما : @ViewBag.RefId</p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <h2>تراکنش با شکست مواجه شد</h2>
+            <hr />
+            <p>کد پیگیری شما : @ViewBag.Status</p>
+        </div>
+    }
+</div>
+
+</body>
+</html>

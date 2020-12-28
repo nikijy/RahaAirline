@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DataLayer.Residence>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    @Html.ActionLink("جدید", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResidenceType.ResidenceKind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visit)
+        </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CheckIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckOut)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResidenceType.ResidenceKind)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            <img src="/ResidenceImages/@item.Image" class="thumbnail" style="max-width: 120px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @item.CreateDate.ToShamsi()
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CheckIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckOut)
+        </td>*@
+        <td>
+            @Html.ActionLink("ویرایش", "Edit", new { id=item.ResidenceID }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.ResidenceID }) |*@
+            @Html.ActionLink("حذف", "Delete", new { id=item.ResidenceID })
+        </td>
+    </tr>
+}
+
+</table>

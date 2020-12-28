@@ -1,0 +1,40 @@
+﻿@using RahaAirline
+@model IEnumerable<DataLayer.Page>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2>وبلاگ ما</h2>
+            </div>
+          
+        </div>
+        <h6 style="direction: ltr;"><a href="/Blog/Index">نمایش همه</a></h6>
+        <div class="row ftco-animate">
+            <div class="carousel1 owl-carousel ftco-owl">
+
+                @foreach (var Item in Model)
+                {
+                    <div class="item">
+                        <div class="blog-entry">
+                            <a href="/BlogDetails/ShowBlogDetail/@Item.PageID" class="block-20" style="background-image: url('/PageImages/@Item.Image');">
+                            </a>
+                            <div class="text p-4">
+                                <div class="meta">
+                                    <div><a href="/BlogDetails/ShowBlogDetail/@Item.PageID">@Item.CreateDate.ToShamsi()</a></div>
+                                    <div><a href="/BlogDetails/ShowBlogDetail/@Item.PageID">@Item.Category.Title</a></div>
+                                </div>
+                                <h3 class="heading"><a href="/BlogDetails/ShowBlogDetail/@Item.PageID">@Item.ShortDescription</a></h3>
+                                <p class="clearfix">
+                                    <a href="/BlogDetails/ShowBlogDetail/@Item.PageID" class="float-left">بیشتر بخوانید</a>
+                                    <a href="/BlogDetails/ShowBlogDetail/@Item.PageID" class="float-right meta-chat"><span class="icon-chat"></span>@Item.Comments.Count</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

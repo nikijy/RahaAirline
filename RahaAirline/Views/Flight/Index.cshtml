@@ -1,0 +1,86 @@
+﻿@using RahaAirline
+@model IEnumerable<DataLayer.Flight>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 style="text-align: center;">لیست پرواز ها</h2>
+
+<hr/>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightClass.FlightClassKind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    @*<tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightClass.FlightClassKind)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.From)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatNo)
+        </td>
+        
+    </tr>*@
+
+    <tr>
+        <td>
+            <a href="/Flight/Payment/@item.FlightID">@item.FlightClass.FlightClassKind </a>
+        </td>
+        <td>
+            <a href="/Flight/Payment/@item.FlightID">@item.From</a>
+        </td>
+        <td>
+            <a href="/Flight/Payment/@item.FlightID">@item.Destination</a>
+        </td>
+        <td>
+            <a href="/Flight/Payment/@item.FlightID">@item.CompanyName</a>
+        </td>
+        <td>
+            <a href="/Flight/Payment/@item.FlightID">@item.Departure</a>
+        </td>
+        <td>
+            <a href="/Flight/Payment/@item.FlightID">@item.Price.ToTooman()</a>
+        </td>
+      
+    </tr>
+}
+
+</table>

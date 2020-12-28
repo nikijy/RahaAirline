@@ -1,0 +1,28 @@
+﻿@using RahaAirline
+@model IEnumerable<DataLayer.Page>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSearch.cshtml";
+
+}
+@*<h3>تعداد"@Model.Count()"با عبارت"@ViewBag.Name"یافت شد</h3>*@
+<div style="width: 750px;">
+    <h3 style="text-align: center;">نتیجه ی جستجو</h3>
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-8 ftco-animate">
+            <a href="/BlogDetails/ShowBlogDetail/@item.PageID" class="mb-3">@item.Category.Title </a>
+            <hr/>
+            <a>@item.ShortDescription</a>
+            <br/>
+            <a href="/BlogDetails/ShowBlogDetail/@item.PageID">
+                <img style="max-width: 100%; min-width: 100%;"src="/PageImages/@item.Image" alt="" class="img-fluid">
+            </a>
+
+           
+
+        </div>
+
+    }
+</div>

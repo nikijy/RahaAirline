@@ -1,0 +1,10 @@
+﻿@model IEnumerable<DataLayer.ShowCategoriesInViews>
+
+<div class="categories">
+    <h3>دسته بندی ها</h3>
+    @foreach (var Item in Model)
+    {
+        <li><a href="/BlogDetails/ShowBlogsByCategoryId/@Item.CategoryID">@Item.PageCount <span>@Item.Title</span></a></li>
+    }
+
+</div>

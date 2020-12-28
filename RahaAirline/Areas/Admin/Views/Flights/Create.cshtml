@@ -1,0 +1,130 @@
+﻿@model DataLayer.Flight
+
+@{
+    ViewBag.Title = "Create";
+}
+@*<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Content/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.css" rel="stylesheet" />
+/CSS*@
+
+<link type="text/css" href="/Content/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery.ui.datepicker-cc.all.min.js"></script>
+
+
+<h2>ایجاد</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FlightClassID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FlightClassID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FlightClassID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.From, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.From, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.From, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Destination, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Destination, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Destination, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Departure, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                
+                <input type="text" id="Departure" name="Departure" class="form-control" placeholder="تاریخ رفت" />
+
+
+                @*<div class="input-group">
+                    <div data-mdpersiandatetimepickershowing="false" title=""
+                         data-original-title=""
+                         data-mdpersiandatetimepickerselecteddatetime="{&quot;Year&quot;:1393,&quot;Month&quot;:10,&quot;Day&quot;:9,&quot;Hour&quot;:0,&quot;Minute&quot;:0,&quot;Second&quot;:0}"
+                         data-mdpersiandatetimepicker="" style="cursor: pointer;"
+                         class="input-group-addon" data-mddatetimepicker="true"
+                         data-targetselector="#exampleInput1" data-trigger="click"
+                         data-enabletimepicker="true">
+
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                    <input class="form-control" id="exampleInput1" placeholder="تاریخ به همراه زمان" type="text" name="Departure">
+                </div>*@
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartureTime, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                <input type="time" name="DepartureTime" id="time"/>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Capacity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="number" min="50" name="Capacity"/>
+                @Html.ValidationMessageFor(model => model.Capacity, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="number" name="Price" min="1000000"/> تومان
+                @*@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Price, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ثبت" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+@*<!--جاوااسکریپت-->
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/scripts/MdBootstrapPersianDateTimePicker/jalaali.js"></script>
+<script src="~/scripts/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.js"></script>
+<!--/جاوااسکریپت-->*@
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+    j(document).ready(function () {
+        j('#Departure').datepicker();
+        j('#checkin_date').datepicker();
+        j('#checkout_date').datepicker();
+    });
+
+
+</script>
